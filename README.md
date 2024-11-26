@@ -40,5 +40,7 @@ In the source code folder is present the basah file that allow to submit the job
 In alternative there are the lines to compile the different file .cpp: 
 
 **Serial**: ```g++ -o serial serial.cpp -fopenmp```
+
 **Parallel (Implicit)**: ```g++ -o implicit implicit.cpp -fopenmp -O2```
+
 **Parallel (OMP)**: ```g++ -o serial serial.cpp -fopenmp```
