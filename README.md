@@ -36,7 +36,7 @@ To run this project, you will need the following tools:
 - OpenMP support in the compiler (if not already enabled).
 
 ## How to Compile and Run the Code
-In the source code folder is present the basah file that allow to submit the job in the cluster.
+In the source code folder is present the bash file (``ScriptCpp.pbs``) that allow to submit the job in the cluster.
 In alternative there are the lines to compile the different file .cpp: 
 
 **Serial**: ```g++ -o serial serial.cpp -fopenmp```
@@ -44,3 +44,5 @@ In alternative there are the lines to compile the different file .cpp:
 **Parallel (Implicit)**: ```g++ -o implicit implicit.cpp -fopenmp -O2```
 
 **Parallel (OMP)**: ```g++ -o serial serial.cpp -fopenmp```
+
+To run the code just ```./serial(or implicit/parallel) N``` where N is the size of the matrix.
