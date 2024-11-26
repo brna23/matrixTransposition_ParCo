@@ -1,0 +1,65 @@
+#!/bin/bash
+# Job name
+#PBS -N Cppjob
+# Output files
+#PBS -o ./Cppjob.o
+#PBS -e ./Cppjob.e
+# Queue name
+#PBS -q short_cpuQ
+# Set the maximum wall time
+#PBS -l walltime=0:10:00
+# Number of nodes, cpus, mpi processors and amount of memory
+#PBS -l select=1:ncpus=64:ompthreads=64:mem=1mb
+
+# Modules for C
+module load gcc91
+g++() {
+    g++-9.1.0 "$@"
+}
+g++ --version
+# Select the working directory
+cd /home/mattia.bernabe/esercizi/progetto
+
+# The code should be compiled before submitting the job
+g++ -o serial serial.cpp -fopenmp
+#g++ -o implicit implicit.cpp -fopenmp -ftree-vectorize -funroll-loops -msse3 -mfpmath=sse
+g++ -o implicit implicit.cpp -fopenmp -O2
+g++ -o parallel parallel.cpp -fopenmp 
+
+# Run code
+./serial 16
+./implicit 16
+./parallel 16
+
+./serial 32
+./implicit 32
+./parallel 32
+
+./serial 64
+./implicit 64
+./parallel 64
+
+./serial 128
+./implicit 128
+./parallel 128
+
+./serial 256
+./implicit 256
+./parallel 256
+
+./serial 512
+./implicit 512
+./parallel 512
+
+./serial 1024
+./implicit 1024
+./parallel 1024
+
+./serial 2048
+./implicit 2048
+./parallel 2048
+
+./serial 4096
+./implicit 4096
+./parallel 4096
+
